@@ -1,4 +1,4 @@
 proteus
 ======
 
-protoypes container
+prototypes container
