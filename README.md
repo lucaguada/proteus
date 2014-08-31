@@ -1,4 +1,4 @@
-kraken
+proteus
 ======
 
-demo container
+protoypes container
