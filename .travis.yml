@@ -1,0 +1,11 @@
+language: java
+script: gradle check & gradle jar
+jdk:
+  - oraclejdk8
+deploy:
+  provider: openshift
+  user: "io.trydent@gmail.com"
+  password:
+    secure: "JEtHn/A5Xtmko1bfDYEGd8WN7T0OgHKnUQy4zxHq3AivsbQXrbNhzwXyvhTgKnTxzgT/kvxGlGP9+L2epL40NCob6icQYyn3GPnJTeZKLEQnRrIfWAMLZvD0jxdhx3TgBxB/9WErLWQ4WMNuROtCqrhox7eUAcRpOmpQysF3R3o="
+  domain: "trydentio"
+  app: "kraken"
