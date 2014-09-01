@@ -12,12 +12,17 @@ import java.util.concurrent.Callable;
 class Poseidon {
 	@RequestMapping("/release")
 	public Callable<String> release() { return () -> Proteus.GOD_CRY; }
+
+	@RequestMapping("/awesome")
+	public Callable<String> awesome() { return () -> Proteus.AWESOME; }
 }
 
 @EnableAutoConfiguration
 @ComponentScan
 public class Proteus {
-	public static final String GOD_CRY = "Release the Kraken";
+	public static final String
+		GOD_CRY = "Release the Kraken",
+		AWESOME = "Awesome!";
 
 	public static void main(String ... args) {
 		SpringApplication.run(Proteus.class, args);
