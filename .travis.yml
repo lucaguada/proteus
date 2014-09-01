@@ -1,11 +1,13 @@
 language: java
 script: gradle check & gradle jar
 jdk:
-  - oraclejdk8
+- oraclejdk8
 deploy:
   provider: openshift
-  user: "io.trydent@gmail.com"
+  user: io.trydent@gmail.com
   password:
-    secure: "JEtHn/A5Xtmko1bfDYEGd8WN7T0OgHKnUQy4zxHq3AivsbQXrbNhzwXyvhTgKnTxzgT/kvxGlGP9+L2epL40NCob6icQYyn3GPnJTeZKLEQnRrIfWAMLZvD0jxdhx3TgBxB/9WErLWQ4WMNuROtCqrhox7eUAcRpOmpQysF3R3o="
-  domain: "trydentio"
-  app: "kraken"
+    secure: FjMcNQvLuyVS/p3V53fqQMMtXFyjQl1PsLirpIakm/66yTwPB/yyGEzO1lhRFSef3tkEtxcR5ylK08b082eKn1OucmMdJEdyPVL4ZLkqmGjU990bB4WuRz3NCiRRgPIp/xRLCkw24iFeUAw6XbbdbXxg5sInqypD8DsUd54vnHE=
+  app: proteus
+  domain: trydentio
+  on:
+    repo: trydent-io/proteus
