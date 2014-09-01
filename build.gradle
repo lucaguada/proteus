@@ -17,7 +17,7 @@ def optaPlanner = ''
 
 
 task wrapper(type: Wrapper) {
-	gradleVersion = '2.1-rc-2'
+	gradleVersion = '2.0'
 }
 
 repositories {
