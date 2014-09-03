@@ -1,5 +1,9 @@
 language: java
 script: gradle copyJar
+before_script:
+  - git config --global user.name tryIO
+  - git config --global user.email io.trydent@gmail.com
+  - git remote add origin https://github.com/trydent-io/proteus.git
 after_script:
   - git commit -m 'Travis CI build' -a
   - git push origin master
