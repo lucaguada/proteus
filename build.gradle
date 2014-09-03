@@ -2,7 +2,12 @@ apply plugin: 'java'
 
 sourceCompatibility = 1.8
 targetCompatibility = 1.8
-version = '1.0'
+//version = '1.0'
+
+jar {
+	archiveName = "${modname}-${version}.jar"
+	version = "${version}"
+}
 
 def tomcat = '8.0.11'
 def springBoot = '1.1.5.RELEASE'
@@ -15,9 +20,13 @@ def commonsLang = '3.3.2'
 def commonsCollection = ''
 def optaPlanner = ''
 
-
 task wrapper(type: Wrapper) {
 	gradleVersion = '2.0'
+}
+
+task copyJar(type: Copy, dependsOn: ['check', 'jar']) {
+	from "build/libs/${jar.archiveName}"
+	into 'deploy/'
 }
 
 repositories {

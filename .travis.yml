@@ -1,7 +1,10 @@
 language: java
-script: gradle check & gradle jar
+script: gradle copyJar
+after_script:
+  - git commit -m 'Travis CI build'
+  - git push origin master
 jdk:
-- oraclejdk8
+  - oraclejdk8
 deploy:
   provider: openshift
   user: io.trydent@gmail.com
