@@ -1,5 +1,5 @@
 language: java
-script: gradle copyJar
+script: gradle copyJar --info
 before_script:
   - git config --global user.name tryIO
   - git config --global user.email io.trydent@gmail.com
