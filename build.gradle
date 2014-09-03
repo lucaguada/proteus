@@ -1,14 +1,3 @@
-apply plugin: 'java'
-
-sourceCompatibility = 1.8
-targetCompatibility = 1.8
-//version = '1.0'
-
-jar {
-	archiveName = "${modname}-${version}.jar"
-	version = "${version}"
-}
-
 def tomcat = '8.0.11'
 def springBoot = '1.1.5.RELEASE'
 def junit = '4.11'
@@ -20,11 +9,37 @@ def commonsLang = '3.3.2'
 def commonsCollection = ''
 def optaPlanner = ''
 
+buildscript {
+	repositories {
+		maven { url = 'https://repo.spring.io/milestone' }
+		maven { url = 'http://repo.spring.io/libs-release' }
+		maven { url = 'https://oss.sonatype.org/content/repositories/snapshots' }
+		jcenter()
+		mavenCentral()
+	}
+
+	dependencies {
+		classpath("org.springframework.boot:spring-boot-gradle-plugin:1.1.5.RELEASE")
+	}
+}
+
+apply plugin: 'java'
+apply plugin: 'spring-boot'
+
+sourceCompatibility = 1.8
+targetCompatibility = 1.8
+//version = '1.0'
+
+jar {
+	archiveName = "${modname}-${version}.jar"
+	version = "${version}"
+}
+
 task wrapper(type: Wrapper) {
 	gradleVersion = '2.0'
 }
 
-task copyJar(type: Copy, dependsOn: ['check', 'jar']) {
+task copyJar(type: Copy, dependsOn: ['check', 'bootRepackage']) {
 	from "build/libs/${jar.archiveName}"
 	into 'target/'
 }
