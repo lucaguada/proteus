@@ -1,0 +1,38 @@
+def tomcat = '8.0.11'
+def springBoot = '1.1.5.RELEASE'
+def junit = '4.11'
+def lombok = '1.14.4'
+def guava = ''
+def gson = ''
+def guice = ''
+def commonsLang = '3.3.2'
+def commonsCollection = ''
+def optaPlanner = ''
+def hikari = '2.0.1'
+def mysql = '5.1.32'
+def vertx = '2.1.2'
+
+apply plugin: 'java'
+apply plugin: 'spring-boot'
+
+sourceCompatibility = 1.8
+targetCompatibility = 1.8
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+	/// Proteus deps.
+	compile project(':common')
+
+	/// Spring Boot deps.
+	compile group: 'org.springframework.boot', name: 'spring-boot-starter-web', version: "$springBoot"
+	compile group: 'org.springframework.boot', name: 'spring-boot-starter-data-rest', version: "$springBoot"
+	compile group: 'org.springframework.boot', name: 'spring-boot-starter-data-jpa', version: "$springBoot"
+
+	/// Other deps.
+	compile group: 'org.projectlombok', name: 'lombok', version: "${lombok}"
+
+    testCompile group: 'junit', name: 'junit', version: '4.11'
+}

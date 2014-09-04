@@ -1,0 +1,20 @@
+spring:
+  thymeleaf:
+    mode:               HTML5
+  jpa:
+    hibernate:
+      ddl-auto:         create
+default:
+  mysql:
+    host:               127.0.0.1
+    port:               3306
+    schema:             proteus
+    username:           ${PROTEUS_MYSQL_DB_USERNAME}
+    password:           ${PROTEUS_MYSQL_DB_PASSWORD}
+openshift:
+  mysql:
+    host:               ${OPENSHIFT_MYSQL_DB_HOST}
+    port:               ${OPENSHIFT_MYSQL_DB_PORT}
+    schema:             ${OPENSHIFT_APP_NAME}
+    username:           ${OPENSHIFT_MYSQL_DB_USERNAME}
+    password:           ${OPENSHIFT_MYSQL_DB_PASSWORD}
