@@ -2,3 +2,5 @@
 kraken.iml
 .idea
 common/common.iml
+app/app.iml
+domain/domain.iml

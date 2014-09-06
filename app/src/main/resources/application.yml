@@ -1,0 +1,32 @@
+spring.profiles.active: ${PROTEUS_PROFILE:development}
+
+spring:
+  thymeleaf:
+    mode:               HTML5
+  jpa:
+    hibernate:
+      ddl-auto:         create
+
+---
+
+spring:
+  profiles:             development
+development:
+  mysql:
+    host:               127.0.0.1
+    port:               3306
+    schema:             proteus
+    username:           root
+    password:           piramide
+
+---
+
+spring:
+  profiles:             openshift
+openshift:
+  mysql:
+    host:               ${OPENSHIFT_MYSQL_DB_HOST:}
+    port:               ${OPENSHIFT_MYSQL_DB_PORT:}
+    schema:             ${OPENSHIFT_APP_NAME:}
+    username:           ${OPENSHIFT_MYSQL_DB_USERNAME:}
+    password:           ${OPENSHIFT_MYSQL_DB_PASSWORD:}

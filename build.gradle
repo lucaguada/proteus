@@ -1,18 +1,5 @@
-def tomcat = '8.0.11'
-def springBoot = '1.1.5.RELEASE'
-def junit = '4.11'
-def lombok = '1.14.4'
-def guava = ''
-def gson = ''
-def guice = ''
-def commonsLang = '3.3.2'
-def commonsCollection = ''
-def optaPlanner = ''
-def hikari = '2.0.1'
-def mysql = '5.1.32'
-def vertx = '2.1.2'
 
-buildscript {
+allprojects {
 	repositories {
 		maven { url = 'https://repo.spring.io/milestone' }
 		maven { url = 'http://repo.spring.io/libs-release' }
@@ -21,9 +8,23 @@ buildscript {
 		mavenCentral()
 	}
 
+	apply plugin: 'java'
+}
+
+buildscript {
+	repositories {
+		maven { url = 'http://repo.spring.io/libs-release' }
+	}
+
 	dependencies {
 		classpath("org.springframework.boot:spring-boot-gradle-plugin:1.1.5.RELEASE")
 	}
+}
+
+dependencies {
+	compile project(':common')
+	compile project(':domain')
+	compile project(':app')
 }
 
 apply plugin: 'java'
@@ -31,7 +32,8 @@ apply plugin: 'spring-boot'
 
 sourceCompatibility = 1.8
 targetCompatibility = 1.8
-//version = '1.0'
+
+mainClassName = 'io.trydent.proteus.App'
 
 jar {
 	archiveName = "${modname}-${version}.jar"
@@ -42,43 +44,7 @@ task wrapper(type: Wrapper) {
 	gradleVersion = '2.0'
 }
 
-task copyJar(type: Copy, dependsOn: ['clean', 'check', 'bootRepackage']) {
+task copyJar(type: Copy, dependsOn: ['build', 'bootRepackage']) {
 	from "build/libs/${jar.archiveName}"
 	into 'target/'
-}
-
-repositories {
-	maven { url = 'https://repo.spring.io/milestone' }
-	maven { url = 'http://repo.spring.io/libs-release' }
-	maven { url = 'https://oss.sonatype.org/content/repositories/snapshots' }
-	jcenter()
-	mavenCentral()
-}
-
-dependencies {
-	/// Proteus deps.
-	compile project(':common')
-	compile project(':domain')
-
-	/// Spring Boot deps.
-	compile group: 'org.springframework.boot', name: 'spring-boot-starter-web', version: "$springBoot"
-	compile group: 'org.springframework.boot', name: 'spring-boot-starter-thymeleaf', version: "$springBoot"
-	compile group: 'org.springframework.boot', name: 'spring-boot-starter-test', version: "$springBoot"
-	compile group: 'org.springframework.boot', name: 'spring-boot-starter-data-rest', version: "$springBoot"
-	compile group: 'org.springframework.boot', name: 'spring-boot-starter-data-jpa', version: "$springBoot"
-
-	/// Datasource deps.
-	compile group: 'com.zaxxer', name: 'HikariCP', version: "${hikari}"
-	compile group: 'mysql', name: 'mysql-connector-java', version: "${mysql}"
-
-	/// VertX deps.
-	compile group: 'io.vertx', name: 'vertx-core', version: "${vertx}"
-
-	/// Other deps.
-	compile group: 'org.projectlombok', name: 'lombok', version: "${lombok}"
-	compile group: 'org.apache.tomcat.embed', name: 'tomcat-embed-core', version: "$tomcat"
-	compile group: 'org.apache.tomcat.embed', name: 'tomcat-embed-el', version: "$tomcat"
-
-	/// Test deps.
-    testCompile group: 'junit', name: 'junit', version: '4.11'
 }

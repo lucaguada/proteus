@@ -1,4 +1,4 @@
 rootProject.name = 'proteus'
 
-include 'common', 'webapp', 'domain'
+include 'common', 'domain', 'app'
 
