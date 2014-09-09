@@ -1,0 +1,1 @@
+insert into people(firstName, middleName, lastName, birth, ssn) values('Hanna', 'Iris', 'OFlowers', '19880525', 'ASDASD123D321')

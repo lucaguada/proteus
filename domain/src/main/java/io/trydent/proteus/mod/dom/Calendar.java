@@ -1,6 +1,6 @@
 package io.trydent.proteus.mod.dom;
 
-import io.trydent.proteus.mod.dom.base.StrongEntity;
+import io.trydent.proteus.mod.dom.base.AbstractStrongEntity;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
@@ -21,7 +21,7 @@ import java.util.Date;
 @AllArgsConstructor
 @ToString
 @EqualsAndHashCode(callSuper = false)
-public class Calendar extends StrongEntity {
+public class Calendar extends AbstractStrongEntity {
 	@Column(nullable = false)
 	private String title;
 

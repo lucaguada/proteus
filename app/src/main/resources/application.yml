@@ -1,4 +1,4 @@
-spring.profiles.active: ${PROTEUS_PROFILE:development}
+spring.profiles.active: ${PROTEUS_PROFILE:dev}
 
 spring:
   thymeleaf:
@@ -10,8 +10,8 @@ spring:
 ---
 
 spring:
-  profiles:             development
-development:
+  profiles:             dev
+dev:
   mysql:
     host:               127.0.0.1
     port:               3306
@@ -22,7 +22,22 @@ development:
 ---
 
 spring:
+  profiles:             build
+build:
+  hsql:
+    host:               127.0.0.1
+    port:               1234
+    schema:             proteus
+    username:           sa
+    password:
+
+---
+
+spring:
   profiles:             openshift
+server:
+  address:              ${OPENSHIFT_DIY_IP:}
+  port:                 ${OPENSHIFT_DIY_PORT:}
 openshift:
   mysql:
     host:               ${OPENSHIFT_MYSQL_DB_HOST:}
@@ -30,3 +45,5 @@ openshift:
     schema:             ${OPENSHIFT_APP_NAME:}
     username:           ${OPENSHIFT_MYSQL_DB_USERNAME:}
     password:           ${OPENSHIFT_MYSQL_DB_PASSWORD:}
+
+---

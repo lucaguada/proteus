@@ -16,7 +16,7 @@ import java.util.UUID;
  * Created by guada on 22/05/14.
  */
 @Component
-public class CalendarLoader extends EntityLoader<CalendarRepository> {
+public class CalendarLoader implements EntityLoader<Calendar> {
 	private static final UUID CALENDAR_UUID = UUID.fromString("7EF3ECCC-9532-4D40-B005-B7A772BA4479");
 
 	@Autowired
@@ -24,7 +24,7 @@ public class CalendarLoader extends EntityLoader<CalendarRepository> {
 
 	@Transactional
 	public void load() {
-		if (repository.findByUuid(CALENDAR_UUID).isPresent()) {
+		if (repository.findByIdIn(Arrays.asList(123L)) == null) {
 			List<Calendar> calendars = Arrays.asList(
 				Calendar.builder()
 					.title("test")

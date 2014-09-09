@@ -1,5 +1,7 @@
 package io.trydent.proteus.conf.base;
 
+import org.springframework.orm.jpa.JpaVendorAdapter;
+
 import javax.sql.DataSource;
 
 /**
@@ -7,4 +9,5 @@ import javax.sql.DataSource;
  */
 public interface DataSourceConfiguration {
 	public DataSource dataSource();
+	public JpaVendorAdapter jpaVendorAdapter();
 }

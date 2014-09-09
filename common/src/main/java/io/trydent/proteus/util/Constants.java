@@ -16,25 +16,28 @@ public interface Constants {
 			HSQLDB = "hsqldb",
 			POSGRESQL = "posgresql",
 			SCHEMA = App.NAME,
-			CALENDARS = "calendars";
+			CALENDARS = "calendars",
+			PEOPLE = "people";
 	}
 
 	public interface Profile {
 		public static final String
 			PRESET = "preset",
-			DEVELOPMENT = "development",
-			TEST = "testing",
+			DEV = "dev",
+			TEST = "test",
 			OPENSHIFT = "openshift",
-			PRODUCTION = "production",
-			BUILD = "building",
+			PROD = "prod",
+			BUILD = "build",
 			OPENSHIFT_MYSQL = OPENSHIFT + "." + Database.MYSQL,
-			DEVELOPMENT_MYSQL = DEVELOPMENT + "." + Database.MYSQL,
+			DEV_MYSQL = DEV + "." + Database.MYSQL,
+			BUILD_HSQLDB = BUILD + "." + Database.HSQLDB,
 			PRESET_MYSQL = PRESET + "." + Database.MYSQL;
 	}
 
 	public interface RestApi {
 		public static final String
 			API = "rest",
-			CALENDARS = API + Database.CALENDARS;
+			CALENDARS = API + Database.CALENDARS,
+			PEOPLE = API + Database.PEOPLE;
 	}
 }

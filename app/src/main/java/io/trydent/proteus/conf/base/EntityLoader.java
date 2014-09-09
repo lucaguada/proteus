@@ -1,8 +1,12 @@
 package io.trydent.proteus.conf.base;
 
-import io.trydent.proteus.mod.repo.base.StrongEntityRepository;
+import io.trydent.proteus.mod.dom.base.WeakEntity;
+import org.springframework.transaction.annotation.Transactional;
 
 /**
- * Created by guada on 23/05/14.
+ * Created by guada on 08/09/14.
  */
-public abstract class EntityLoader<R extends StrongEntityRepository> implements EntityLoading { }
+public interface EntityLoader<E extends WeakEntity> {
+	@Transactional
+	public void load();
+}
