@@ -2,3 +2,5 @@ rootProject.name = 'proteus'
 
 include 'common', 'domain', 'app'
 
+include 'repository'
+

@@ -47,3 +47,18 @@ openshift:
     password:           ${OPENSHIFT_MYSQL_DB_PASSWORD:}
 
 ---
+
+spring:
+  profiles:             heavy
+server:
+  address:              127.0.0.1
+  port:                 1234
+heavy:
+  oracle:
+    host:               127.0.0.1
+    port:               1521
+    database:           demo
+    username:           demo
+    password:           demo
+
+---

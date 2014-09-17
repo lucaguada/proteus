@@ -14,6 +14,7 @@ public interface Constants {
 		public static final String
 			MYSQL = "mysql",
 			HSQLDB = "hsqldb",
+			ORALCE = "oracle",
 			POSGRESQL = "posgresql",
 			SCHEMA = App.NAME,
 			CALENDARS = "calendars",
@@ -28,10 +29,12 @@ public interface Constants {
 			OPENSHIFT = "openshift",
 			PROD = "prod",
 			BUILD = "build",
+			HEAVY = "heavy",
 			OPENSHIFT_MYSQL = OPENSHIFT + "." + Database.MYSQL,
 			DEV_MYSQL = DEV + "." + Database.MYSQL,
 			BUILD_HSQLDB = BUILD + "." + Database.HSQLDB,
-			PRESET_MYSQL = PRESET + "." + Database.MYSQL;
+			PRESET_MYSQL = PRESET + "." + Database.MYSQL,
+			HEAVY_ORACLE = HEAVY + "." + Database.ORALCE;
 	}
 
 	public interface RestApi {

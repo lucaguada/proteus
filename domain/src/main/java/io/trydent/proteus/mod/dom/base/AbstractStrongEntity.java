@@ -14,9 +14,8 @@ import static javax.persistence.GenerationType.IDENTITY;
  * Created by guada on 04/09/14.
  */
 @Data
-@ToString
-@EqualsAndHashCode(callSuper = false)
 @MappedSuperclass
+@EqualsAndHashCode(callSuper = false)
 public abstract class AbstractStrongEntity extends AbstractWeakEntity implements StrongEntity {
 	@Id
 	@GeneratedValue(strategy = IDENTITY)

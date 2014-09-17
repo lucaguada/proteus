@@ -19,7 +19,6 @@ import java.util.Date;
 @Table(name = "calendars")
 @NoArgsConstructor
 @AllArgsConstructor
-@ToString
 @EqualsAndHashCode(callSuper = false)
 public class Calendar extends AbstractStrongEntity {
 	@Column(nullable = false)

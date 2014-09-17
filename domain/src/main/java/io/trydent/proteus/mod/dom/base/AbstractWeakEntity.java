@@ -15,13 +15,13 @@ import java.util.UUID;
  * Created by guada on 04/09/14.
  */
 @Data
-@ToString
-@EqualsAndHashCode
 @MappedSuperclass
 public abstract class AbstractWeakEntity implements WeakEntity {
-	@NaturalId(mutable = false)
+/*
 	@GeneratedValue(generator = "system-uuid")
 	@GenericGenerator(name = "system-uuid", strategy = "uuid")
+*/
+	@NaturalId(mutable = false)
 	@Column(unique = true, updatable = false)
-	private UUID uuid;
+	private String uuid;
 }

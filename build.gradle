@@ -1,5 +1,22 @@
 
 allprojects {
+	ext {
+		tomcat = '8.0.11'
+		springBoot = '1.1.6.RELEASE'
+		junit = '4.11'
+		lombok = '1.14.4'
+		guava = ''
+		gson = ''
+		guice = ''
+		commonsLang = '3.3.2'
+		commonsCollection = ''
+		optaPlanner = ''
+		hikari = '2.0.1'
+		mysql = '5.1.32'
+		vertx = '2.1.2'
+		hsqldb = '2.3.2'
+	}
+
 	repositories {
 		maven { url = 'https://repo.spring.io/milestone' }
 		maven { url = 'http://repo.spring.io/libs-release' }
@@ -9,6 +26,9 @@ allprojects {
 	}
 
 	apply plugin: 'java'
+
+	sourceCompatibility = 1.8
+	targetCompatibility = 1.8
 }
 
 buildscript {
@@ -24,14 +44,11 @@ buildscript {
 dependencies {
 	compile project(':common')
 	compile project(':domain')
+	compile project(':repository')
 	compile project(':app')
 }
 
-apply plugin: 'java'
 apply plugin: 'spring-boot'
-
-sourceCompatibility = 1.8
-targetCompatibility = 1.8
 
 mainClassName = 'io.trydent.proteus.App'
 

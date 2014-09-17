@@ -1,6 +1,6 @@
 package io.trydent.proteus.conf;
 
-import io.trydent.proteus.conf.store.mysql.MySqlConfiguration;
+import io.trydent.proteus.conf.base.DataSourceConfiguration;
 import org.springframework.beans.factory.FactoryBean;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
@@ -25,11 +25,11 @@ import static java.lang.System.out;
 @EnableTransactionManagement
 public class PersistenceConfiguration {
 	@Autowired
-	private MySqlConfiguration mysql;
+	private DataSourceConfiguration dataSource;
 
 	@Bean
 	public JpaVendorAdapter jpaVendorAdapter(final Environment environment) {
-		return mysql.jpaVendorAdapter();
+		return dataSource.jpaVendorAdapter();
 	}
 
 	@Bean
@@ -38,14 +38,14 @@ public class PersistenceConfiguration {
 		Arrays.asList(environment.getActiveProfiles()).forEach(profile -> out.format("Profile found: %s\n", profile));
 		final Map<String, String> properties = new HashMap<>();
 		properties.put("hibernate.generate_statistics", "false");
-		properties.put("hibernate.hbm2ddl.auto", "create");
+		properties.put("hibernate.hbm2ddl.auto", "validate");
 
 		final LocalContainerEntityManagerFactoryBean factoryBean = new LocalContainerEntityManagerFactoryBean();
 		factoryBean.setPersistenceUnitName("io.trydent.proteus.mod.dom_persist");
 		factoryBean.setPackagesToScan("io.trydent.proteus.mod.dom");
 		factoryBean.setJpaDialect(new HibernateJpaDialect());
 		factoryBean.setJpaVendorAdapter(jpaVendorAdapter);
-		factoryBean.setDataSource(mysql.dataSource());
+		factoryBean.setDataSource(dataSource.dataSource());
 		factoryBean.setLoadTimeWeaver(new InstrumentationLoadTimeWeaver());
 		factoryBean.setJpaPropertyMap(properties);
 		return factoryBean;
@@ -64,10 +64,10 @@ public class PersistenceConfiguration {
 		final HikariDataSource dataSource = new HikariDataSource();
 
 		dataSource.setMaximumPoolSize(100);
-		dataSource.setDataSourceClassName(MySqlProperties.DRIVER);
-		dataSource.addDataSourceProperty("url", MySqlProperties.URL);
-		dataSource.addDataSourceProperty("user", MySqlProperties.USERNAME);
-		dataSource.addDataSourceProperty("password", MySqlProperties.PASSWORD);
+		dataSource.setDataSourceClassName(OracleProperties.DRIVER);
+		dataSource.addDataSourceProperty("url", OracleProperties.URL);
+		dataSource.addDataSourceProperty("user", OracleProperties.USERNAME);
+		dataSource.addDataSourceProperty("password", OracleProperties.PASSWORD);
 		dataSource.addDataSourceProperty("cachePrepStmts", true);
 		dataSource.addDataSourceProperty("prepStmtCacheSize", 250);
 		dataSource.addDataSourceProperty("prepStmtCacheSqlLimit", 2048);

@@ -1,0 +1,11 @@
+dependencies {
+	/// Proteus deps.
+	compile project(':common')
+	compile project(':domain')
+
+	// be careful about the sub-packages of the starters, since they are very coupled with the parent (or rather vice-versa)
+	compile group: 'org.springframework.data', name: 'spring-data-rest-core', version: '2.1.4.RELEASE'
+
+	/// Other deps.
+	compile group: 'org.projectlombok', name: 'lombok', version: "$lombok"
+}
