@@ -1,7 +1,7 @@
 package io.trydent.proteus.conf.store.hsql;
 
-import ch.qos.logback.core.db.dialect.HSQLDBDialect;
 import io.trydent.proteus.conf.base.DataSourceConfiguration;
+import org.hibernate.dialect.HSQLDialect;
 import org.springframework.jdbc.datasource.DriverManagerDataSource;
 import org.springframework.orm.jpa.JpaVendorAdapter;
 import org.springframework.orm.jpa.vendor.Database;
@@ -28,7 +28,7 @@ public interface HsqlConfiguration extends DataSourceConfiguration {
 		final HibernateJpaVendorAdapter adapter = new HibernateJpaVendorAdapter();
 
 		adapter.setDatabase(Database.HSQL);
-		adapter.setDatabasePlatform(HSQLDBDialect.class.getName());
+		adapter.setDatabasePlatform(HSQLDialect.class.getName());
 		adapter.setGenerateDdl(true);
 		adapter.setShowSql(true);
 

@@ -3,6 +3,7 @@ allprojects {
 	ext {
 		tomcat = '8.0.11'
 		springBoot = '1.1.6.RELEASE'
+		springDataRest = '2.1.4.RELEASE'
 		junit = '4.11'
 		lombok = '1.14.4'
 		guava = ''

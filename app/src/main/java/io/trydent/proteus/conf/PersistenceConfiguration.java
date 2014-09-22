@@ -1,6 +1,10 @@
 package io.trydent.proteus.conf;
 
 import io.trydent.proteus.conf.base.DataSourceConfiguration;
+import lombok.Data;
+import lombok.EqualsAndHashCode;
+import lombok.NoArgsConstructor;
+import lombok.val;
 import org.springframework.beans.factory.FactoryBean;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
@@ -17,6 +21,7 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
 import javax.persistence.EntityManagerFactory;
 import java.util.Arrays;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import static java.lang.System.out;
